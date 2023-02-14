@@ -1,0 +1,22 @@
+# this is like a blueprint file for your API
+
+openapi: 3.0.0 # structure may change, it is important to set version
+
+info:
+  title: "Smart Personal Note Tracker"
+  description: "An API about keeping track of people and notes."
+  version: "1.0.0"
+
+servers:
+  - url: "/api"
+
+paths:
+  /people:
+    get:
+      operationId: "people.read_all"
+      tags:
+        - "People"
+      summary: "Read the list of people"
+      responses:
+        "200":
+          description: "Successfully read people list"
