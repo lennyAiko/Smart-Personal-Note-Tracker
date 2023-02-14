@@ -41,3 +41,11 @@ def create(person):
 
 def read_all():
     return  list(PEOPLE.values())
+
+def read_one(lname):
+    if lname in PEOPLE:
+        return PEOPLE[lname]
+    else:
+        abort(
+            404, f"Person with last name {lname} not found"
+        )

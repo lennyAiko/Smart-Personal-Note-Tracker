@@ -21,13 +21,21 @@ components:
           type: "string"
         lname:
           type: "string"
+  parameters:
+    lname:
+      name: "lname"
+      description: "Last name of the person to get"
+      in: path
+      required: True
+      schema:
+        type: "string"
 
 paths:
   /people:
     get:
       operationId: "people.read_all"
       tags:
-        - "People"
+        - People
       summary: "Read the list of people"
       responses:
         "200":
@@ -45,6 +53,17 @@ paths:
             schema:
               x-body-name: "person"
               $ref: "#/components/schemas/Person"
-      response:
+      responses:
         "201":
           description: "Successfully created person"
+  /people/{lname}:
+    get:
+      operationId: "people.read_one"
+      tags:
+        - People
+      summary: "Read one person"
+      parameters:
+        - $ref: "#/components/parameters/lname"
+      responses:
+        "200":
+          description: "Successfully read people list"
